@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {string} s
+       * @return {string}
+       */
+      function isPalindrome(str) {
+        return str === str.split('').reverse().join('');
+      }
+      var longestPalindrome = function (s) {
+        var max = 0,
+          palindromeStr = '';
+        if (!s) return '';
+        if (s.length === 1) return s;
+        for (var i = 0; i < s.length; i++) {
+          for (var j = i + 1; j < s.length + 1; j++) {
+            if (isPalindrome(s.slice(i, j)) && j - i > max) {
+              palindromeStr = s.slice(i, j);
+              max = j - i;
+            }
+          }
+        }
+        if (max < 1) {
+          return s[0];
+        }
+        return palindromeStr;
+      };
+      longestPalindrome('ac');
+    </script>
+    <script>
+
+      /**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var threeSum = function(nums) {
+    var res=[]
+ let map = new Map()
+ for (let i=0;i<nums.length;i++){
+     map.set(i,nums[i])
+ }
+for (let i=0;i<nums.length;i++){
+     for (let j=i+1;j<nums.length;j++){
+         let c = -(nums[i]+nums[j])
+         if(map.has(c)){
+           res.push([nums[i],nums[j],c])
+         }
+     }
+ }
+ return res
+};
+      // function convert(s, numRows) {
+      //   if (numRows === 1) return s;
+      //   let len = Math.min(numRows, s.length);
+      //   let dowm = false,
+      //     loc = 0,
+      //     rows = new Array(len).fill('');
+      //   for (let l of s) {
+      //     rows[loc] += l;
+      //     if (loc === 0 || loc === numRows - 1) {
+      //       dowm = !dowm;
+      //     }
+      //     loc += dowm ? +1 : -1;
+      //   }
+
+      //   return rows.join('');
+      // }
+      // console.log(convert('LEETCODEISHIRING', 3));
+    </script>
+  </body>
+</html>
